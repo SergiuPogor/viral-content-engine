@@ -7,7 +7,7 @@ describe('Config Schema', () => {
     expect(result.ollama.model).toBe('llama3.2');
     expect(result.defaults.platform).toBe('tiktok');
     expect(result.defaults.count).toBe(30);
-    expect(result.defaults.min_score).toBe(70);
+    expect(result.defaults.min_score).toBe(40);
     expect(result.defaults.tone).toBe('dark-humor');
     expect(result.defaults.theme).toBe('dark-minimal');
     expect(result.branding.handle).toBe('@viral');
@@ -124,7 +124,7 @@ describe('DEFAULT_CONFIG', () => {
     expect(DEFAULT_CONFIG.ollama.host).toBe('http://localhost:11434');
     expect(DEFAULT_CONFIG.ollama.model).toBe('llama3.2');
     expect(DEFAULT_CONFIG.defaults.count).toBe(30);
-    expect(DEFAULT_CONFIG.defaults.min_score).toBe(70);
+    expect(DEFAULT_CONFIG.defaults.min_score).toBe(40);
     expect(DEFAULT_CONFIG.defaults.formats).toHaveLength(8);
     expect(DEFAULT_CONFIG.concurrency).toBe(4);
   });
