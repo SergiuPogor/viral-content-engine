@@ -10,6 +10,29 @@ A local-first CLI that turns a single prompt into a full batch of platform-optim
 
 ---
 
+
+
+## 🎬 Examples
+
+All images auto-generated from topic: **"being a developer"**
+
+### Relatable Cards
+| | | |
+|:---:|:---:|:---:|
+| ![r0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-0_tiktok.png) | ![r1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-1_tiktok.png) | ![r2](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-2_tiktok.png) |
+
+### Hot Takes
+| | | |
+|:---:|:---:|:---:|
+| ![h0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-0_tiktok.png) | ![h1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-1_tiktok.png) | ![h2](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-2_tiktok.png) |
+
+### Comparisons
+| | |
+|:---:|:---:|
+| ![c0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/comparison-0_tiktok.png) | ![c1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/comparison-1_tiktok.png) |
+
+> Generated with: `viral generate "being a developer" --platform tiktok --niche developers`
+
 ## Table of Contents
 
 - [Quick Start](#quick-start)
