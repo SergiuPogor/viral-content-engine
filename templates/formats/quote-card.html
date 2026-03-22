@@ -4,68 +4,122 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: {{width}}px;
-    height: {{height}}px;
-    overflow: hidden;
-  }
+  html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
+
   body {
-    background: {{background}};
+    background: linear-gradient(160deg, #0f0c29, #302b63, #24243e);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px;
+    padding: 100px 80px;
     position: relative;
-    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+    font-family: Georgia, 'Times New Roman', serif;
   }
-  .atmosphere {
+
+  /* Stars */
+  .star { position: absolute; background: #fff; border-radius: 50%; }
+
+  /* Giant quotation mark */
+  .big-quote {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 30% 50%, {{accent_color}}15 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .quote-mark {
-    font-size: 200px;
-    color: {{accent_color}}33;
+    top: 60px;
+    left: 70px;
+    font-size: 220px;
+    color: #ffffff08;
     font-family: Georgia, serif;
-    line-height: 0.6;
-    margin-bottom: -20px;
+    line-height: 1;
     user-select: none;
   }
-  .quote-text {
+
+  /* Quote content */
+  .content {
     font-size: {{font_size}};
-    color: {{text_color}};
+    color: #f1f5f9;
     text-align: center;
-    line-height: 1.35;
-    font-weight: 600;
+    line-height: 1.4;
+    font-weight: 400;
     font-style: italic;
-    max-width: 85%;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    max-width: 88%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    margin-bottom: 60px;
   }
-  .line {
-    width: 40px;
-    height: 3px;
-    background: {{accent_color}};
-    margin-top: 40px;
-    border-radius: 2px;
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
   }
+  .divider-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #a78bfa);
+  }
+  .divider-line.right {
+    background: linear-gradient(90deg, #a78bfa, transparent);
+  }
+  .divider-diamond {
+    width: 8px; height: 8px;
+    background: #a78bfa;
+    transform: rotate(45deg);
+  }
+
+  /* Author placeholder */
+  .author {
+    font-size: 24px;
+    color: #a78bfa;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Vignette overlay */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, #00000066 100%);
+    pointer-events: none;
+  }
+
   .handle {
     position: absolute;
-    bottom: 40px;
-    font-size: 16px;
-    color: {{handle_color}};
-    letter-spacing: 0.05em;
+    bottom: 50px;
+    font-size: 20px;
+    color: #ffffff33;
   }
 </style>
 </head>
 <body>
-  <div class="atmosphere"></div>
-  <div class="quote-mark">"</div>
-  <div class="quote-text">{{content}}</div>
-  <div class="line"></div>
-  <div class="handle">{{handle}}</div>
+  <!-- Decorative stars -->
+  <div class="star" style="width:2px;height:2px;top:12%;left:8%;opacity:0.6"></div>
+  <div class="star" style="width:3px;height:3px;top:22%;left:88%;opacity:0.8"></div>
+  <div class="star" style="width:2px;height:2px;top:71%;left:5%;opacity:0.5"></div>
+  <div class="star" style="width:3px;height:3px;top:84%;left:92%;opacity:0.7"></div>
+  <div class="star" style="width:1px;height:1px;top:45%;left:3%;opacity:0.9"></div>
+  <div class="star" style="width:2px;height:2px;top:55%;left:96%;opacity:0.6"></div>
+  <div class="star" style="width:4px;height:4px;top:8%;left:50%;opacity:0.4"></div>
+  <div class="star" style="width:2px;height:2px;top:90%;left:40%;opacity:0.6"></div>
+
+  <div class="vignette"></div>
+  <div class="big-quote">"</div>
+
+  <div class="content">{{content}}</div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line right"></div>
+  </div>
+
+  <div class="author">{{handle}}</div>
 </body>
 </html>

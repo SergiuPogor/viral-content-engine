@@ -4,78 +4,139 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: {{width}}px;
-    height: {{height}}px;
-    overflow: hidden;
-  }
+  html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
+
   body {
-    background: {{background}};
+    background: #09090b;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 80px;
+    padding: 100px 80px;
     position: relative;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   }
-  .label {
-    font-family: '{{font}}', system-ui, sans-serif;
-    font-size: 14px;
-    color: {{accent_color}};
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+
+  /* Left accent stripe */
+  .stripe {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, #ef4444, #f97316, #eab308);
+  }
+
+  /* Background noise texture */
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(#ffffff04 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff04 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+
+  /* HOT TAKE badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ef444422, #f9731622);
+    border: 1px solid #ef444444;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .badge-fire { font-size: 28px; }
+  .badge-text {
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 30px;
+    color: #f97316;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
-  .take {
-    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+
+  /* Main content */
+  .content {
     font-size: {{font_size}};
-    color: {{text_color}};
-    line-height: 1.15;
+    color: #fafafa;
+    line-height: 1.2;
     font-weight: 900;
     letter-spacing: -0.03em;
-    max-width: 95%;
+    max-width: 92%;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
   }
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: {{accent_color}};
-    margin: 40px 0;
-    border-radius: 2px;
+
+  /* Underline decoration */
+  .underline-dec {
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    border-radius: 3px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
   }
+
+  /* Counter/opposing view */
   .counter {
-    font-family: '{{font}}', system-ui, sans-serif;
-    font-size: 20px;
-    color: {{handle_color}};
+    font-size: 24px;
+    color: #71717a;
     font-style: italic;
-    max-width: 80%;
-    line-height: 1.5;
+    max-width: 85%;
+    position: relative;
+    z-index: 2;
+    line-height: 1.4;
   }
+  .counter::before {
+    content: "Others say: ";
+    color: #52525b;
+    font-style: normal;
+  }
+
+  /* Handle */
   .handle {
     position: absolute;
-    bottom: 40px;
-    left: 80px;
-    font-family: '{{font}}', system-ui, sans-serif;
-    font-size: 16px;
-    color: {{handle_color}};
+    bottom: 50px;
+    right: 80px;
+    font-size: 22px;
+    color: #ffffff33;
+    font-weight: 500;
   }
-  .corner-accent {
+
+  /* Big number decoration */
+  .bg-number {
     position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 40px;
-    height: 40px;
-    border-top: 3px solid {{accent_color}};
-    border-right: 3px solid {{accent_color}};
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 320px;
+    font-weight: 900;
+    color: #ffffff04;
+    line-height: 1;
+    user-select: none;
+    z-index: 1;
   }
 </style>
 </head>
 <body>
-  <div class="corner-accent"></div>
-  <div class="label">Hot Take</div>
-  <div class="take">{{content}}</div>
-  <div class="divider"></div>
-  {{#if counter}}<div class="counter">"{{counter}}"</div>{{/if}}
+  <div class="stripe"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-number">!</div>
+
+  <div class="badge">
+    <span class="badge-fire">🔥</span>
+    <span class="badge-text">Hot Take</span>
+  </div>
+
+  <div class="content">{{content}}</div>
+  <div class="underline-dec"></div>
+  {{#if counter}}<div class="counter">{{counter}}</div>{{/if}}
+
   <div class="handle">{{handle}}</div>
 </body>
 </html>

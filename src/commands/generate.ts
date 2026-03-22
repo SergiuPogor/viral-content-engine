@@ -16,7 +16,9 @@ export async function runGenerate(
   const config = await loadConfig();
 
   const platform = options.platform || config.defaults.platform;
-  const formats = options.formats.length > 0 ? options.formats : config.defaults.formats;
+  const formats = Array.isArray(options.formats) && options.formats.length > 0
+    ? options.formats
+    : config.defaults.formats;
   const count = options.count || config.defaults.count;
   const minScore = options.minScore ?? config.defaults.min_score;
   const tone = options.tone || config.defaults.tone;

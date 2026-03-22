@@ -4,104 +4,161 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: {{width}}px;
-    height: {{height}}px;
-    overflow: hidden;
-  }
+  html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
+
   body {
-    background: {{background}};
+    background: #030712;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 60px;
+    align-items: center;
+    padding: 80px 60px;
     position: relative;
-    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    gap: 40px;
   }
-  .title {
-    text-align: center;
+
+  /* Ambient glow */
+  .glow-left {
+    position: absolute;
+    left: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 400px; height: 600px;
+    background: radial-gradient(ellipse, #3b82f622 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .glow-right {
+    position: absolute;
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 400px; height: 600px;
+    background: radial-gradient(ellipse, #a855f722 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Label */
+  .top-label {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 20px;
-    color: {{handle_color}};
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 40px;
     font-weight: 600;
+    color: #6b7280;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
+
+  /* Columns container */
   .columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 0;
     width: 100%;
+    position: relative;
+    z-index: 2;
   }
-  .col-header {
-    font-size: 28px;
-    font-weight: 800;
-    padding: 20px 30px;
-    text-align: center;
-    letter-spacing: -0.01em;
+
+  /* Divider */
+  .divider {
+    width: 2px;
+    align-self: stretch;
+    background: linear-gradient(180deg, transparent, #ffffff22, transparent);
+    flex-shrink: 0;
+    position: relative;
   }
-  .col-header.left {
-    color: {{accent_color}};
-    border-right: 2px solid {{accent_color}}22;
-  }
-  .col-header.right {
-    color: {{text_color}};
-  }
-  .row {
-    display: contents;
-  }
-  .cell {
-    padding: 18px 30px;
-    font-size: 22px;
-    color: {{text_color}};
-    line-height: 1.4;
-  }
-  .cell.left {
-    border-right: 2px solid {{accent_color}}22;
-    color: {{handle_color}};
-    text-align: right;
-  }
-  .cell.right {
-    font-weight: 700;
-    text-align: left;
-  }
-  .vs-badge {
+  .divider::after {
+    content: "VS";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: {{accent_color}};
-    color: {{background}};
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 50%;
     width: 48px;
     height: 48px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
     font-size: 16px;
-    z-index: 10;
+    font-weight: 700;
+    color: #6b7280;
+    text-align: center;
+    line-height: 48px;
   }
+
+  .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 30px;
+  }
+
+  .col-header {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .col-left .col-header {
+    color: #3b82f6;
+    border-bottom: 2px solid #3b82f622;
+  }
+  .col-right .col-header {
+    color: #a855f7;
+    border-bottom: 2px solid #a855f722;
+  }
+
+  .row {
+    padding: 16px 0;
+    font-size: {{font_size}};
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    border-bottom: 1px solid #ffffff08;
+    color: #e5e7eb;
+  }
+  .row:last-child { border-bottom: none; }
+
+  .col-left .row { color: #93c5fd; }
+  .col-right .row { color: #d8b4fe; }
+
   .handle {
     position: absolute;
-    bottom: 30px;
-    right: 40px;
-    font-size: 14px;
-    color: {{handle_color}};
+    bottom: 40px;
+    font-size: 20px;
+    color: #ffffff22;
   }
 </style>
 </head>
 <body>
-  <div class="title">{{content}}</div>
+  <div class="glow-left"></div>
+  <div class="glow-right"></div>
+  <div class="top-label">{{left_label}} vs {{right_label}}</div>
+
   <div class="columns">
-    <div class="col-header left">{{left_label}}</div>
-    <div class="col-header right">{{right_label}}</div>
-    {{#each rows}}
-    <div class="cell left">{{this.[0]}}</div>
-    <div class="cell right">{{this.[1]}}</div>
-    {{/each}}
+    <div class="col col-left">
+      <div class="col-header">{{left_label}}</div>
+      {{#each rows}}
+      <div class="row">{{this.[0]}}</div>
+      {{/each}}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="col col-right">
+      <div class="col-header">{{right_label}}</div>
+      {{#each rows}}
+      <div class="row">{{this.[1]}}</div>
+      {{/each}}
+    </div>
   </div>
-  <div class="vs-badge">VS</div>
+
   <div class="handle">{{handle}}</div>
 </body>
 </html>
