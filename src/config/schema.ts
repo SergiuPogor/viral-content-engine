@@ -52,7 +52,7 @@ const DEFAULT_CONFIG: ViralConfig = {
     platform: 'tiktok',
     formats: ['relatable', 'hot-take', 'comparison', 'fake-tweet', 'fake-text', 'list-card', 'quote-card', 'roast'],
     count: 30,
-    min_score: 70,
+    min_score: 40,
     tone: 'dark-humor',
     theme: 'dark-minimal',
   },
