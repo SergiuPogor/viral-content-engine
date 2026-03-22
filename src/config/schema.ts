@@ -30,7 +30,7 @@ export const configSchema = z.object({
       'fake-text', 'list-card', 'quote-card', 'roast',
     ]),
     count: z.number().int().min(1).max(100).default(30),
-    min_score: z.number().min(0).max(100).default(70),
+    min_score: z.number().min(0).max(100).default(40),
     tone: toneSchema.default('dark-humor'),
     theme: themeSchema.default('dark-minimal'),
   }).default({}),

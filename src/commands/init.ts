@@ -19,7 +19,7 @@ defaults:
     - quote-card
     - roast
   count: 30
-  min_score: 70
+  min_score: 40
   tone: dark-humor
   theme: dark-minimal
 
