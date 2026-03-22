@@ -10,28 +10,24 @@ A local-first CLI that turns a single prompt into a full batch of platform-optim
 
 ---
 
-
-
 ## 🎬 Examples
 
-All images auto-generated from topic: **"being a developer"**
+Generated with `viral generate "being a developer" --platform tiktok --niche developers`
 
-### Relatable Cards
-| | | |
+### Relatable & Hot Takes
+| Relatable | Hot Take | Quote Card |
 |:---:|:---:|:---:|
-| ![r0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-0_tiktok.png) | ![r1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-1_tiktok.png) | ![r2](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/relatable-2_tiktok.png) |
+| [![relatable](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/relatable.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/relatable.png) | [![hot-take](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/hot-take.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/hot-take.png) | [![quote](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/quote-card.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/quote-card.png) |
 
-### Hot Takes
-| | | |
+### Comparison & Roast
+| Comparison | Roast Checklist | Fake Tweet |
 |:---:|:---:|:---:|
-| ![h0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-0_tiktok.png) | ![h1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-1_tiktok.png) | ![h2](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/hot-take-2_tiktok.png) |
+| [![comparison](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/comparison.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/comparison.png) | [![roast](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/roast.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/roast.png) | [![tweet](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/fake-tweet.png)](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.3-examples/fake-tweet.png) |
 
-### Comparisons
-| | |
-|:---:|:---:|
-| ![c0](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/comparison-0_tiktok.png) | ![c1](https://github.com/SergiuPogor/viral-content-engine/releases/download/v1.0.2-examples/comparison-1_tiktok.png) |
+> All images: 1080×1920px (TikTok), dark-minimal theme, generated in ~60 seconds with local Ollama.
 
-> Generated with: `viral generate "being a developer" --platform tiktok --niche developers`
+
+
 
 ## Table of Contents
 
