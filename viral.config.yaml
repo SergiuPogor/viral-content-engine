@@ -1,0 +1,28 @@
+ollama:
+  host: "http://localhost:11434"
+  model: "llama3.2"
+
+defaults:
+  platform: tiktok
+  formats:
+    - relatable
+    - hot-take
+    - comparison
+    - fake-tweet
+    - fake-text
+    - list-card
+    - quote-card
+    - roast
+  count: 30
+  min_score: 70
+  tone: dark-humor
+  theme: dark-minimal
+
+branding:
+  handle: "@viral"
+  font: "Inter"
+
+output:
+  dir: "./output"
+
+concurrency: 4

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: {{width}}px;
+    height: {{height}}px;
+    overflow: hidden;
+  }
+  body {
+    background: {{background}};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+  }
+  .tweet-card {
+    background: {{background}};
+    border: 1px solid {{handle_color}}33;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 85%;
+    width: 85%;
+  }
+  .tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: {{accent_color}};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 24px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+  .user-info .name {
+    font-size: 20px;
+    font-weight: 700;
+    color: {{text_color}};
+  }
+  .user-info .handle-name {
+    font-size: 16px;
+    color: {{handle_color}};
+  }
+  .tweet-text {
+    font-size: 32px;
+    color: {{text_color}};
+    line-height: 1.4;
+    margin-bottom: 30px;
+  }
+  .tweet-meta {
+    display: flex;
+    gap: 40px;
+    padding-top: 20px;
+    border-top: 1px solid {{handle_color}}22;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: {{handle_color}};
+    font-size: 16px;
+  }
+  .meta-item .count {
+    font-weight: 700;
+    color: {{text_color}};
+  }
+  .branding {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 14px;
+    color: {{handle_color}};
+    font-family: '{{font}}', system-ui, sans-serif;
+  }
+</style>
+</head>
+<body>
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <div class="avatar">{{name.[0]}}</div>
+      <div class="user-info">
+        <div class="name">{{name}}</div>
+        <div class="handle-name">{{handle_name}}</div>
+      </div>
+    </div>
+    <div class="tweet-text">{{content}}</div>
+    <div class="tweet-meta">
+      <div class="meta-item"><span class="count">{{retweets}}</span> Reposts</div>
+      <div class="meta-item"><span class="count">{{likes}}</span> Likes</div>
+    </div>
+  </div>
+  <div class="branding">{{handle}}</div>
+</body>
+</html>

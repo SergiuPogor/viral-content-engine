@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: {{width}}px;
+    height: {{height}}px;
+    overflow: hidden;
+  }
+  body {
+    background: {{background}};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: 900;
+    color: {{text_color}};
+    margin-bottom: 50px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .number {
+    font-size: 20px;
+    font-weight: 800;
+    color: {{accent_color}};
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: {{accent_color}}15;
+    flex-shrink: 0;
+  }
+  .item-text {
+    font-size: 24px;
+    color: {{text_color}};
+    line-height: 1.4;
+    padding-top: 4px;
+  }
+  .handle {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    font-size: 16px;
+    color: {{handle_color}};
+  }
+  .accent-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: {{accent_color}};
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="title">{{title}}</div>
+  <div class="list">
+    {{#each items}}
+    <div class="list-item">
+      <div class="number">{{@index}}</div>
+      <div class="item-text">{{this}}</div>
+    </div>
+    {{/each}}
+  </div>
+  <div class="handle">{{handle}}</div>
+</body>
+</html>

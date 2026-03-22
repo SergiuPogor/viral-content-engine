@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: {{width}}px;
+    height: {{height}}px;
+    overflow: hidden;
+  }
+  body {
+    background: {{background}};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    position: relative;
+    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+  }
+  .atmosphere {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, {{accent_color}}15 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .quote-mark {
+    font-size: 200px;
+    color: {{accent_color}}33;
+    font-family: Georgia, serif;
+    line-height: 0.6;
+    margin-bottom: -20px;
+    user-select: none;
+  }
+  .quote-text {
+    font-size: {{font_size}};
+    color: {{text_color}};
+    text-align: center;
+    line-height: 1.35;
+    font-weight: 600;
+    font-style: italic;
+    max-width: 85%;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+  }
+  .line {
+    width: 40px;
+    height: 3px;
+    background: {{accent_color}};
+    margin-top: 40px;
+    border-radius: 2px;
+  }
+  .handle {
+    position: absolute;
+    bottom: 40px;
+    font-size: 16px;
+    color: {{handle_color}};
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="quote-mark">"</div>
+  <div class="quote-text">{{content}}</div>
+  <div class="line"></div>
+  <div class="handle">{{handle}}</div>
+</body>
+</html>

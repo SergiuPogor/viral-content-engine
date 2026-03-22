@@ -1,0 +1,7 @@
+Generate 3 fake tweets on the topic.
+Rules:
+- Fictional username + handle
+- Absurd or painfully relatable
+- Must feel authentic
+- Output ONLY valid JSON.
+{"tweets": [{"name":"...","handle":"@...","text":"...","likes":"14.2K","retweets":"2.1K"}]}

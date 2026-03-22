@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: {{width}}px;
+    height: {{height}}px;
+    overflow: hidden;
+  }
+  body {
+    background: {{background}};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+  }
+  .title {
+    font-size: 36px;
+    font-weight: 900;
+    color: {{accent_color}};
+    margin-bottom: 50px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .checkbox {
+    width: 28px;
+    height: 28px;
+    border: 2px solid {{accent_color}};
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    background: {{accent_color}}15;
+  }
+  .checkbox::after {
+    content: "✓";
+    color: {{accent_color}};
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .check-text {
+    font-size: 22px;
+    color: {{text_color}};
+    line-height: 1.4;
+  }
+  .check-item:last-child .check-text {
+    font-weight: 700;
+    color: {{accent_color}};
+  }
+  .handle {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    font-size: 16px;
+    color: {{handle_color}};
+  }
+  .emoji-bg {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    font-size: 120px;
+    opacity: 0.08;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="title">{{title}}</div>
+  <div class="checklist">
+    {{#each items}}
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <div class="check-text">{{this}}</div>
+    </div>
+    {{/each}}
+  </div>
+  <div class="handle">{{handle}}</div>
+</body>
+</html>

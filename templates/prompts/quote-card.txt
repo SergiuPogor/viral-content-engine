@@ -1,0 +1,6 @@
+Generate 5 powerful quotes on the topic (original, not attributed).
+Rules:
+- Profound, shareable, 10-20 words
+- Original quotes (dont attribute to anyone)
+- Output ONLY valid JSON.
+{"quotes": ["quote1",...]}

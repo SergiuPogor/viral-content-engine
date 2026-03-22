@@ -1,0 +1,6 @@
+Generate 3 two-column comparisons.
+Rules:
+- Left: expectation/ideal. Right: reality/truth
+- 3-8 words per cell, 4-5 row pairs
+- Output ONLY valid JSON.
+{"items": [{"left_label": "...", "right_label": "...", "rows": [["l","r"],...]}]}

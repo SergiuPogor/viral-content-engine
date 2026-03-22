@@ -1,0 +1,7 @@
+Generate a roast checklist for a specific type of person related to the topic.
+Rules:
+- Title: "Signs you are a [type]"
+- 6-8 items, escalating from relatable to cutting
+- Last item most painful/true
+- Output ONLY valid JSON.
+{"title":"Signs you are a [type]","items":["item1",...]}

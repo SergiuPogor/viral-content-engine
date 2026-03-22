@@ -1,0 +1,9 @@
+Score this social media content for viral potential.
+Score each on 5 dimensions 0.0-1.0:
+- specificity: extremely specific vs vague/generic
+- tension: contradiction, surprise, unexpected contrast
+- emotion: immediate emotional response before finishing
+- zero_friction: works with zero context for new viewers
+- tag_target: makes you think of someone specific to send to
+Output ONLY valid JSON.
+{"scores": [{"id":"...","specificity":0.0,"tension":0.0,"emotion":0.0,"zero_friction":0.0,"tag_target":0.0,"total":0}]}

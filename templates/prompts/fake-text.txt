@@ -1,0 +1,5 @@
+Generate 2 fake iPhone text conversations.
+Rules:
+- 4-6 messages, punchline on last message
+- Output ONLY valid JSON.
+{"conversations": [{"messages": [{"sender":"them","text":"..."},{"sender":"me","text":"..."}]}]}

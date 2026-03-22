@@ -1,0 +1,6 @@
+Generate 3 lists of 6-7 items each on the topic.
+Rules:
+- Each item specific and honest
+- One item slightly controversial
+- Output ONLY valid JSON.
+{"lists": [{"title":"...","items":["item1",...]}]}

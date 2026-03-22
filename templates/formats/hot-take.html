@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: {{width}}px;
+    height: {{height}}px;
+    overflow: hidden;
+  }
+  body {
+    background: {{background}};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    position: relative;
+  }
+  .label {
+    font-family: '{{font}}', system-ui, sans-serif;
+    font-size: 14px;
+    color: {{accent_color}};
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .take {
+    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+    font-size: {{font_size}};
+    color: {{text_color}};
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    max-width: 95%;
+  }
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: {{accent_color}};
+    margin: 40px 0;
+    border-radius: 2px;
+  }
+  .counter {
+    font-family: '{{font}}', system-ui, sans-serif;
+    font-size: 20px;
+    color: {{handle_color}};
+    font-style: italic;
+    max-width: 80%;
+    line-height: 1.5;
+  }
+  .handle {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    font-family: '{{font}}', system-ui, sans-serif;
+    font-size: 16px;
+    color: {{handle_color}};
+  }
+  .corner-accent {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    border-top: 3px solid {{accent_color}};
+    border-right: 3px solid {{accent_color}};
+  }
+</style>
+</head>
+<body>
+  <div class="corner-accent"></div>
+  <div class="label">Hot Take</div>
+  <div class="take">{{content}}</div>
+  <div class="divider"></div>
+  {{#if counter}}<div class="counter">"{{counter}}"</div>{{/if}}
+  <div class="handle">{{handle}}</div>
+</body>
+</html>
