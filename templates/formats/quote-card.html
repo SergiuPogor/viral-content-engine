@@ -7,119 +7,193 @@
   html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
 
   body {
-    background: linear-gradient(160deg, #0f0c29, #302b63, #24243e);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 80px;
+    height: 100vh;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
     position: relative;
-    font-family: Georgia, 'Times New Roman', serif;
+    overflow: hidden;
+    background: #050510;
   }
 
-  /* Stars */
+  /* Rich layered gradient fills entire canvas */
+  .bg1 {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #1e1060 0%, #0c0828 30%, #050510 50%, #0a0520 70%, #1a0533 100%);
+  }
+  .bg2 {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 120% 60% at 50% 0%, #2e1065 0%, transparent 60%);
+  }
+  .bg3 {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 20% 90%, #1a0533 0%, transparent 50%);
+  }
+  .bg4 {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 85% 30%, #0c1f5e22 0%, transparent 60%);
+  }
+
+  /* Stars scattered everywhere */
   .star { position: absolute; background: #fff; border-radius: 50%; }
 
-  /* Giant quotation mark */
-  .big-quote {
+  /* Giant decorative quotation marks */
+  .big-q-open {
     position: absolute;
-    top: 60px;
-    left: 70px;
-    font-size: 220px;
-    color: #ffffff08;
+    top: 60px; left: 50px;
+    font-size: 700px;
+    color: rgba(167, 139, 250, 0.05);
     font-family: Georgia, serif;
-    line-height: 1;
+    line-height: 0.7;
     user-select: none;
   }
-
-  /* Quote content */
-  .content {
-    font-size: {{font_size}};
-    color: #f1f5f9;
-    text-align: center;
-    line-height: 1.4;
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: 0.01em;
-    max-width: 88%;
-    position: relative;
-    z-index: 2;
-    margin-bottom: 60px;
+  .big-q-close {
+    position: absolute;
+    bottom: 60px; right: 50px;
+    font-size: 700px;
+    color: rgba(167, 139, 250, 0.05);
+    font-family: Georgia, serif;
+    line-height: 0.7;
+    user-select: none;
+    transform: rotate(180deg);
   }
 
-  /* Divider */
-  .divider {
+  /* Top section with quote icon */
+  .top-section {
+    flex: 0 0 auto;
+    padding: 90px 80px 0;
+    z-index: 2;
+  }
+  .quote-icon {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    border-radius: 22px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 40px;
-    position: relative;
+    justify-content: center;
+    font-size: 52px;
+    color: #fff;
+    font-family: Georgia, serif;
+    font-weight: 900;
+    box-shadow: 0 8px 40px rgba(124,58,237,0.3);
+  }
+
+  /* Content fills center */
+  .content-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 50px 80px;
     z-index: 2;
   }
-  .divider-line {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #a78bfa);
+
+  .main-text {
+    font-size: {{font_size}};
+    color: #f0ecff;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
   }
-  .divider-line.right {
-    background: linear-gradient(90deg, #a78bfa, transparent);
+
+  /* Bottom section */
+  .bottom-section {
+    flex: 0 0 auto;
+    padding: 0 80px 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    z-index: 2;
   }
-  .divider-diamond {
-    width: 8px; height: 8px;
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .orn-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, #a78bfa44, transparent);
+  }
+  .orn-line.r {
+    background: linear-gradient(90deg, transparent, #a78bfa44);
+  }
+  .orn-dot {
+    width: 12px; height: 12px;
     background: #a78bfa;
-    transform: rotate(45deg);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(167,139,250,0.4);
   }
 
-  /* Author placeholder */
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .author {
-    font-size: 24px;
+    font-size: 28px;
     color: #a78bfa;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    position: relative;
-    z-index: 2;
+  }
+  .save-hint {
+    font-size: 26px;
+    color: #555;
+    font-weight: 600;
   }
 
-  /* Vignette overlay */
-  .vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, #00000066 100%);
+  /* Vignette */
+  .vig {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%);
     pointer-events: none;
-  }
-
-  .handle {
-    position: absolute;
-    bottom: 50px;
-    font-size: 20px;
-    color: #ffffff33;
   }
 </style>
 </head>
 <body>
-  <!-- Decorative stars -->
-  <div class="star" style="width:2px;height:2px;top:12%;left:8%;opacity:0.6"></div>
-  <div class="star" style="width:3px;height:3px;top:22%;left:88%;opacity:0.8"></div>
-  <div class="star" style="width:2px;height:2px;top:71%;left:5%;opacity:0.5"></div>
-  <div class="star" style="width:3px;height:3px;top:84%;left:92%;opacity:0.7"></div>
-  <div class="star" style="width:1px;height:1px;top:45%;left:3%;opacity:0.9"></div>
-  <div class="star" style="width:2px;height:2px;top:55%;left:96%;opacity:0.6"></div>
-  <div class="star" style="width:4px;height:4px;top:8%;left:50%;opacity:0.4"></div>
-  <div class="star" style="width:2px;height:2px;top:90%;left:40%;opacity:0.6"></div>
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+  <div class="bg3"></div>
+  <div class="bg4"></div>
+  <div class="vig"></div>
 
-  <div class="vignette"></div>
-  <div class="big-quote">"</div>
+  <div class="star" style="width:2px;height:2px;top:5%;left:10%;opacity:0.8"></div>
+  <div class="star" style="width:3px;height:3px;top:12%;left:82%;opacity:0.6"></div>
+  <div class="star" style="width:2px;height:2px;top:25%;left:5%;opacity:0.9"></div>
+  <div class="star" style="width:4px;height:4px;top:8%;left:55%;opacity:0.5"></div>
+  <div class="star" style="width:2px;height:2px;top:65%;left:8%;opacity:0.7"></div>
+  <div class="star" style="width:3px;height:3px;top:78%;left:90%;opacity:0.8"></div>
+  <div class="star" style="width:2px;height:2px;top:55%;left:94%;opacity:0.6"></div>
+  <div class="star" style="width:1px;height:1px;top:38%;left:3%;opacity:1"></div>
+  <div class="star" style="width:3px;height:3px;top:85%;left:45%;opacity:0.4"></div>
+  <div class="star" style="width:2px;height:2px;top:92%;left:18%;opacity:0.6"></div>
+  <div class="star" style="width:3px;height:3px;top:42%;left:92%;opacity:0.3"></div>
+  <div class="star" style="width:2px;height:2px;top:18%;left:35%;opacity:0.5"></div>
+  <div class="star" style="width:2px;height:2px;top:70%;left:50%;opacity:0.4"></div>
+  <div class="star" style="width:3px;height:3px;top:30%;left:70%;opacity:0.5"></div>
 
-  <div class="content">{{content}}</div>
+  <div class="big-q-open">"</div>
+  <div class="big-q-close">"</div>
 
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-diamond"></div>
-    <div class="divider-line right"></div>
+  <div class="top-section">
+    <div class="quote-icon">"</div>
   </div>
 
-  <div class="author">{{handle}}</div>
+  <div class="content-section">
+    <div class="main-text">{{content}}</div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="ornament">
+      <div class="orn-line r"></div>
+      <div class="orn-dot"></div>
+      <div class="orn-line"></div>
+    </div>
+    <div class="bottom-row">
+      <span class="author">{{handle}}</span>
+      <span class="save-hint">📌 Save this</span>
+    </div>
+  </div>
 </body>
 </html>

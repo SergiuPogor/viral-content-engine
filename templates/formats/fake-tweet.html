@@ -4,102 +4,275 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: {{width}}px;
-    height: {{height}}px;
-    overflow: hidden;
-  }
+  html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
+
   body {
-    background: {{background}};
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    position: relative;
+    overflow: hidden;
+    background: #000000;
+  }
+
+  /* Subtle dot pattern fills entire background */
+  .bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #ffffff06 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .bg-glow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    min-height: 1200px; max-height: 1600px;
+    background: radial-gradient(circle, #1d9bf015 0%, transparent 70%);
+  }
+
+  /* Top spacer with X logo */
+  .top-area {
+    flex: 0 0 auto;
+    padding: 70px 70px 30px;
+    display: flex;
     align-items: center;
-    font-family: '{{font}}', system-ui, -apple-system, sans-serif;
+    justify-content: space-between;
+    z-index: 2;
   }
+  .x-logo {
+    font-size: 36px;
+    font-weight: 900;
+    color: #e7e9ea;
+    letter-spacing: -0.05em;
+  }
+  .top-pill {
+    background: #16181c;
+    border: 1px solid #2f3336;
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-size: 20px;
+    color: #71767b;
+    font-weight: 500;
+  }
+
+  /* Tweet card fills center */
+  .tweet-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 60px;
+    z-index: 2;
+  }
+
   .tweet-card {
-    background: {{background}};
-    border: 1px solid {{handle_color}}33;
-    border-radius: 16px;
-    padding: 40px;
-    max-width: 85%;
-    width: 85%;
+    background: #16181c;
+    border: 1px solid #2f3336;
+    border-radius: 24px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
+
+  /* Header with avatar */
   .tweet-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 16px;
   }
   .avatar {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    background: {{accent_color}};
+    background: linear-gradient(135deg, #1d9bf0, #1a8cd8);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: 800;
-    font-size: 24px;
-    margin-right: 16px;
+    font-size: 28px;
     flex-shrink: 0;
   }
-  .user-info .name {
-    font-size: 20px;
-    font-weight: 700;
-    color: {{text_color}};
-  }
-  .user-info .handle-name {
-    font-size: 16px;
-    color: {{handle_color}};
-  }
-  .tweet-text {
-    font-size: 32px;
-    color: {{text_color}};
-    line-height: 1.4;
-    margin-bottom: 30px;
-  }
-  .tweet-meta {
+  .user-info {
     display: flex;
-    gap: 40px;
-    padding-top: 20px;
-    border-top: 1px solid {{handle_color}}22;
+    flex-direction: column;
+    gap: 4px;
   }
-  .meta-item {
+  .user-name {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: {{handle_color}};
-    font-size: 16px;
   }
-  .meta-item .count {
+  .name {
+    font-size: 24px;
     font-weight: 700;
-    color: {{text_color}};
+    color: #e7e9ea;
   }
-  .branding {
-    position: absolute;
-    bottom: 30px;
-    right: 40px;
-    font-size: 14px;
-    color: {{handle_color}};
-    font-family: '{{font}}', system-ui, sans-serif;
+  .verified {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1d9bf0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 900;
+  }
+  .handle-name {
+    font-size: 20px;
+    color: #71767b;
+  }
+
+  /* Tweet text - BIG */
+  .tweet-text {
+    font-size: {{font_size}};
+    color: #e7e9ea;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Timestamp */
+  .tweet-time {
+    font-size: 20px;
+    color: #71767b;
+    padding-top: 10px;
+  }
+
+  /* Divider */
+  .tweet-divider {
+    height: 1px;
+    background: #2f3336;
+  }
+
+  /* Engagement stats */
+  .tweet-stats {
+    display: flex;
+    gap: 50px;
+    padding: 10px 0;
+  }
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-count {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e7e9ea;
+  }
+  .stat-label {
+    font-size: 20px;
+    color: #71767b;
+  }
+
+  .tweet-divider2 {
+    height: 1px;
+    background: #2f3336;
+  }
+
+  /* Action bar */
+  .tweet-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 0;
+  }
+  .action {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #71767b;
+  }
+
+  /* Bottom bar */
+  .bottom-area {
+    flex: 0 0 auto;
+    padding: 30px 70px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+  }
+  .bottom-hint {
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
+  }
+  .handle {
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
   }
 </style>
 </head>
 <body>
-  <div class="tweet-card">
-    <div class="tweet-header">
-      <div class="avatar">{{name.[0]}}</div>
-      <div class="user-info">
-        <div class="name">{{name}}</div>
-        <div class="handle-name">{{handle_name}}</div>
+  <div class="bg-pattern"></div>
+  <div class="bg-glow"></div>
+
+  <div class="top-area">
+    <span class="x-logo">𝕏</span>
+    <span class="top-pill">Trending</span>
+  </div>
+
+  <div class="tweet-area">
+    <div class="tweet-card">
+      <div class="tweet-header">
+        <div class="avatar">{{name.[0]}}</div>
+        <div class="user-info">
+          <div class="user-name">
+            <span class="name">{{name}}</span>
+            <span class="verified">✓</span>
+          </div>
+          <span class="handle-name">{{handle_name}}</span>
+        </div>
+      </div>
+
+      <div class="tweet-text">{{content}}</div>
+
+      <div class="tweet-time">8:42 PM · Mar 22, 2026</div>
+
+      <div class="tweet-divider"></div>
+
+      <div class="tweet-stats">
+        <div class="stat">
+          <span class="stat-count">{{retweets}}</span>
+          <span class="stat-label">Reposts</span>
+        </div>
+        <div class="stat">
+          <span class="stat-count">{{likes}}</span>
+          <span class="stat-label">Likes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-count">2.1M</span>
+          <span class="stat-label">Views</span>
+        </div>
+      </div>
+
+      <div class="tweet-divider2"></div>
+
+      <div class="tweet-actions">
+        <div class="action">💬</div>
+        <div class="action">🔁</div>
+        <div class="action">❤️</div>
+        <div class="action">📊</div>
+        <div class="action">📤</div>
       </div>
     </div>
-    <div class="tweet-text">{{content}}</div>
-    <div class="tweet-meta">
-      <div class="meta-item"><span class="count">{{retweets}}</span> Reposts</div>
-      <div class="meta-item"><span class="count">{{likes}}</span> Likes</div>
-    </div>
   </div>
-  <div class="branding">{{handle}}</div>
+
+  <div class="bottom-area">
+    <span class="bottom-hint">Screenshot & share</span>
+    <span class="handle">{{handle}}</span>
+  </div>
 </body>
 </html>

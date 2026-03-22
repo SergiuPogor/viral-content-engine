@@ -129,42 +129,45 @@ describe('Format Names', () => {
 });
 
 describe('calculateFontSize', () => {
-  it('should return 72px for content <= 50 chars', () => {
-    expect(calculateFontSize(10)).toBe('72px');
-    expect(calculateFontSize(50)).toBe('72px');
+  it('should return 160px for content <= 40 chars', () => {
+    expect(calculateFontSize(10)).toBe('160px');
+    expect(calculateFontSize(40)).toBe('160px');
   });
 
-  it('should return 56px for content 51-100 chars', () => {
-    expect(calculateFontSize(51)).toBe('56px');
-    expect(calculateFontSize(75)).toBe('56px');
-    expect(calculateFontSize(100)).toBe('56px');
+  it('should return 130px for content 41-70 chars', () => {
+    expect(calculateFontSize(41)).toBe('130px');
+    expect(calculateFontSize(55)).toBe('130px');
+    expect(calculateFontSize(70)).toBe('130px');
   });
 
-  it('should return 44px for content 101-150 chars', () => {
-    expect(calculateFontSize(101)).toBe('44px');
-    expect(calculateFontSize(125)).toBe('44px');
-    expect(calculateFontSize(150)).toBe('44px');
+  it('should return 108px for content 71-100 chars', () => {
+    expect(calculateFontSize(71)).toBe('108px');
+    expect(calculateFontSize(90)).toBe('108px');
   });
 
-  it('should return 34px for content > 150 chars', () => {
-    expect(calculateFontSize(151)).toBe('34px');
-    expect(calculateFontSize(200)).toBe('34px');
-    expect(calculateFontSize(500)).toBe('34px');
+  it('should return 58px for content > 200 chars', () => {
+    expect(calculateFontSize(201)).toBe('58px');
+    expect(calculateFontSize(250)).toBe('58px');
+    expect(calculateFontSize(500)).toBe('58px');
   });
 
   it('should handle 0 length', () => {
-    expect(calculateFontSize(0)).toBe('72px');
+    expect(calculateFontSize(0)).toBe('160px');
   });
 
-  it('should handle exact boundary at 50', () => {
-    expect(calculateFontSize(50)).toBe('72px');
+  it('should handle exact boundary at 40', () => {
+    expect(calculateFontSize(40)).toBe('160px');
+    expect(calculateFontSize(41)).toBe('130px');
   });
 
   it('should handle exact boundary at 100', () => {
-    expect(calculateFontSize(100)).toBe('56px');
+    expect(calculateFontSize(70)).toBe('130px');
+    expect(calculateFontSize(71)).toBe('108px');
+    expect(calculateFontSize(100)).toBe('108px');
   });
 
-  it('should handle exact boundary at 150', () => {
-    expect(calculateFontSize(150)).toBe('44px');
+  it('should handle exact boundary at 140', () => {
+    expect(calculateFontSize(140)).toBe('88px');
+    expect(calculateFontSize(141)).toBe('72px');
   });
 });

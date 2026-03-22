@@ -14,6 +14,7 @@ Handlebars.registerHelper('eq', (a: unknown, b: unknown) => a === b);
 Handlebars.registerHelper('ifCond', function (this: unknown, v1: unknown, v2: unknown, options: Handlebars.HelperOptions) {
   return v1 === v2 ? options.fn(this) : options.inverse(this);
 });
+Handlebars.registerHelper('add', (a: number, b: number) => a + b);
 
 export async function renderTemplate(
   formatName: string,

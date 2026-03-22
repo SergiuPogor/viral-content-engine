@@ -95,6 +95,7 @@ export interface TemplateVars {
   retweets?: string;
   messages?: { sender: string; text: string }[];
   title?: string;
+  counter?: string;
 }
 
 export interface GenerateOptions {

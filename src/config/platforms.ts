@@ -76,8 +76,10 @@ export function getThemeColors(theme: Theme): ThemeColors {
 }
 
 export function calculateFontSize(contentLength: number): string {
-  if (contentLength <= 50) return '72px';
-  if (contentLength <= 100) return '56px';
-  if (contentLength <= 150) return '44px';
-  return '34px';
+  if (contentLength <= 40) return '160px';
+  if (contentLength <= 70) return '130px';
+  if (contentLength <= 100) return '108px';
+  if (contentLength <= 140) return '88px';
+  if (contentLength <= 200) return '72px';
+  return '58px';
 }

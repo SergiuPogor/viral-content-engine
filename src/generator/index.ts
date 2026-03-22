@@ -147,6 +147,7 @@ export async function generateContent(
     if (raw.retweets) templateVars.retweets = raw.retweets as string;
     if (raw.messages) templateVars.messages = raw.messages as { sender: string; text: string }[];
     if (raw.title) templateVars.title = raw.title as string;
+    if (raw.counter) templateVars.counter = raw.counter as string;
 
     generated.push({
       id: item.id,

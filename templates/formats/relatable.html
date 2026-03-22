@@ -7,143 +7,185 @@
   html, body { width: {{width}}px; height: {{height}}px; overflow: hidden; }
 
   body {
-    background: #0a0a0a;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 70px;
-    position: relative;
+    height: 100vh;
     font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #4c1d95 0%, #7c3aed 20%, #a855f7 40%, #c026d3 60%, #ec4899 80%, #f43f5e 100%);
   }
 
-  /* Dramatic gradient orbs */
-  .orb1 {
-    position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, #7c3aed33 0%, transparent 70%);
-    top: -100px; left: -150px;
-    border-radius: 50%;
-  }
-  .orb2 {
-    position: absolute;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, #ec489933 0%, transparent 70%);
-    bottom: -80px; right: -100px;
-    border-radius: 50%;
-  }
+  /* Decorative floating shapes fill entire canvas */
+  .shape { position: absolute; border-radius: 50%; pointer-events: none; }
+  .s1 { width: 600px; height: 600px; top: -150px; right: -150px; background: rgba(255,255,255,0.06); }
+  .s2 { width: 450px; height: 450px; bottom: 100px; left: -120px; background: rgba(255,255,255,0.05); }
+  .s3 { width: 300px; height: 300px; top: 35%; right: 5%; background: rgba(255,255,255,0.04); }
+  .s4 { width: 500px; height: 500px; bottom: -200px; right: -100px; background: rgba(255,255,255,0.05); }
+  .s5 { width: 200px; height: 200px; top: 15%; left: 8%; background: rgba(255,255,255,0.03); }
 
-  /* Top label */
-  .label {
+  /* Watermark emoji pattern fills background */
+  .watermark {
     position: absolute;
-    top: 70px;
-    left: 70px;
+    inset: 0;
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    pointer-events: none;
+    opacity: 0.06;
+    overflow: hidden;
+  }
+  .watermark-row {
+    display: flex;
+    justify-content: space-around;
+    font-size: 120px;
+    white-space: nowrap;
+  }
+  .watermark-row:nth-child(even) { transform: translateX(60px); }
+
+  /* Top label area */
+  .top-area {
+    flex: 0 0 auto;
+    padding: 80px 70px 0;
+    z-index: 2;
+  }
+  .label-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-  }
-  .label-dot {
-    width: 10px; height: 10px;
-    background: #a78bfa;
-    border-radius: 50%;
-  }
-  .label-text {
-    font-size: 22px;
-    font-weight: 600;
-    color: #a78bfa;
-    letter-spacing: 0.12em;
+    gap: 12px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 16px 36px;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  /* Main quote marks */
-  .quote-open {
-    position: absolute;
-    top: 120px;
-    left: 60px;
-    font-size: 160px;
-    color: #7c3aed22;
-    font-family: Georgia, serif;
-    line-height: 1;
-    font-weight: 900;
-    user-select: none;
-  }
-
-  /* Content */
-  .content {
-    font-size: {{font_size}};
-    color: #ffffff;
-    text-align: center;
-    line-height: 1.25;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    max-width: 92%;
-    position: relative;
+  /* Main content fills center */
+  .content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 70px;
     z-index: 2;
   }
 
-  /* Highlighted word effect — last word gets gradient */
-  .content em {
-    font-style: normal;
-    background: linear-gradient(135deg, #a78bfa, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .glass-card {
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 36px;
+    padding: 70px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
   }
 
-  /* Bottom bar */
-  .bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0; right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, #7c3aed, #ec4899, #f59e0b);
+  .main-text {
+    font-size: {{font_size}};
+    color: #ffffff;
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.4);
   }
 
-  /* Handle */
-  .handle {
-    position: absolute;
-    bottom: 50px;
-    right: 70px;
+  .divider {
+    width: 100px;
+    height: 5px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+  }
+
+  .reactions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .reaction {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 16px 30px;
+    font-size: 24px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+  .reaction span { font-size: 32px; }
+
+  /* Bottom area with stats and handle */
+  .bottom-area {
+    flex: 0 0 auto;
+    padding: 30px 70px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+  }
+  .stat-row {
+    display: flex;
+    gap: 30px;
+  }
+  .stat {
     font-size: 22px;
-    color: #ffffff44;
+    color: rgba(255,255,255,0.5);
+    font-weight: 600;
+  }
+  .stat strong { color: rgba(255,255,255,0.8); font-size: 26px; }
+  .handle {
+    font-size: 28px;
+    color: rgba(255,255,255,0.35);
     font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-
-  /* Corner decoration */
-  .corner-br {
-    position: absolute;
-    bottom: 70px;
-    left: 70px;
-    width: 40px; height: 40px;
-    border-bottom: 3px solid #7c3aed44;
-    border-left: 3px solid #7c3aed44;
-  }
-  .corner-tr {
-    position: absolute;
-    top: 70px;
-    right: 70px;
-    width: 40px; height: 40px;
-    border-top: 3px solid #ec489944;
-    border-right: 3px solid #ec489944;
   }
 </style>
 </head>
 <body>
-  <div class="orb1"></div>
-  <div class="orb2"></div>
-  <div class="bottom"></div>
+  <div class="shape s1"></div>
+  <div class="shape s2"></div>
+  <div class="shape s3"></div>
+  <div class="shape s4"></div>
+  <div class="shape s5"></div>
 
-  <div class="label">
-    <div class="label-dot"></div>
-    <span class="label-text">Relatable</span>
+  <div class="watermark">
+    <div class="watermark-row">💀 😭 💀 😭 💀 😭</div>
+    <div class="watermark-row">😭 💀 😭 💀 😭 💀</div>
+    <div class="watermark-row">💀 😭 💀 😭 💀 😭</div>
+    <div class="watermark-row">😭 💀 😭 💀 😭 💀</div>
+    <div class="watermark-row">💀 😭 💀 😭 💀 😭</div>
+    <div class="watermark-row">😭 💀 😭 💀 😭 💀</div>
+    <div class="watermark-row">💀 😭 💀 😭 💀 😭</div>
+    <div class="watermark-row">😭 💀 😭 💀 😭 💀</div>
   </div>
 
-  <div class="quote-open">"</div>
-  <div class="corner-tr"></div>
-  <div class="corner-br"></div>
+  <div class="top-area">
+    <span class="label-pill">💀 Relatable</span>
+  </div>
 
-  <div class="content">{{content}}</div>
+  <div class="content-area">
+    <div class="glass-card">
+      <div class="main-text">{{content}}</div>
+      <div class="divider"></div>
+      <div class="reactions">
+        <div class="reaction"><span>💀</span> 24.8K</div>
+        <div class="reaction"><span>🔥</span> tag someone</div>
+      </div>
+    </div>
+  </div>
 
-  <div class="handle">{{handle}}</div>
+  <div class="bottom-area">
+    <div class="stat-row">
+      <div class="stat"><strong>1.2M</strong> views</div>
+      <div class="stat"><strong>48K</strong> shares</div>
+    </div>
+    <div class="handle">{{handle}}</div>
+  </div>
 </body>
 </html>
